@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>女帝模拟器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 顶部政务栏 -->
+        <header class="top-bar">
+            <div class="top-bar-item">国库：<span id="treasury">50000</span> 两</div>
+            <div class="top-bar-item">地点：<span id="location">金銮殿</span></div>
+            <div class="top-bar-item">时辰：<span id="game-time">开元元年 正月 寅时</span></div>
+        </header>
+
+        <table class="main-layout-table">
+            <tr>
+                <!-- 左侧君主面板 -->
+                <td class="empress-panel-cell">
+                    <aside id="empress-panel">
+                        <div class="empress-portrait">
+                            <img src="https://s1.imagehub.cc/images/2025/05/20/99ca7536a0913bc24b919f001240347d.jpg" alt="女帝头像">
+                        </div>
+                        <div class="empress-attributes">
+                            <h3><span id="empress-name">女帝</span></h3>
+                            <p>凰龄：<span id="empress-age">初登大宝·碧玉年华 (16)</span></p>
+                            <p>纪年：<span id="reign-year">开元元年</span></p>
+                            <p>寿数：<span id="empress-lifespan">天命轮盘 (70-100)</span></p>
+                            <p>健康：<span id="empress-health">100</span></p>
+                            <hr>
+                            <h4>帝王六维</h4>
+                            <p>凤仪：<span id="attr-fengyi">10</span> <small>(形貌昳丽)</small></p>
+                            <p>权术：<span id="attr-quanshu">10</span> <small>(懵懂稚子)</small></p>
+                            <p>才略：<span id="attr-cailue">10</span> <small>(不求甚解)</small></p>
+                            <p>武魄：<span id="attr-wupo">10</span> <small>(弱柳扶风)</small></p>
+                            <p>民心：<span id="attr-minxin">50</span> <small>(勉强度日)</small></p>
+                            <p>军力：<span id="attr-junli">50</span> <small>(堪堪自保)</small></p>
+                             <hr>
+                            <h4>后宫专精</h4>
+                            <p>床笫术：<span id="skill-chuangzi">0</span></p>
+                            <p>读心术：<span id="skill-duxin">0</span></p>
+                            <p>调教术：<span id="skill-tiaojiao">0</span></p>
+                        </div>
+                    </aside>
+                </td>
+
+                <!-- 中央交互区 -->
+                <td class="main-content-cell">
+                    <main id="main-content">
+                        <div class="background-layer" style="background-image: url('https://s1.imagehub.cc/images/2025/05/22/26411b96ede55df85046a0e571e424e0.jpg');"></div>
+                        <div class="foreground-layer">
+                            <div class="event-text-box">
+                                <p>寅时过半，你抓着老皇帝的传位诏书，这时候外头太监扯着嗓子喊：”吉时到——”</p>
+                                <p>大殿的门吱呀一声推开，阳光刚好打在你龙袍的金线上，晃得底下跪着的大臣们睁不开眼。</p>
+                                <p>礼部尚书呈上玉玺，真正的盛世，此刻才刚开幕。</p>
+                                <p>隐约听见《山河赋》的琴音化入朝霞——</p>
+                            </div>
+                            <div class="choices-box">
+                                <!-- 选项将由JavaScript动态生成 -->
+                                <button class="choice-button" data-choice="1">1. 登基</button>
+                            </div>
+                        </div>
+                    </main>
+                </td>
+            </tr>
+        </table>
+
+        <!-- 底部侍君栏 -->
+        <footer id="consort-panel">
+            <!-- 初始无侍君，此区域为空 -->
+        </footer>
+
+        <!-- 操作控制栏 -->
+        <nav id="control-bar">
+            <button class="control-button">场景切换</button>
+            <button class="control-button">调阅档案</button>
+            <button id="api-settings-button" class="control-button">API设置</button>
+        </nav>
+    </div>
+
+    <!-- API 设置模态窗口 -->
+    <div id="api-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2>API 连接设置</h2>
+            <p>此功能用于连接大型语言模型，以生成动态的游戏内容。</p>
+            
+            <label for="api-url">API 地址 (需兼容OpenAI协议):</label>
+            <input type="text" id="api-url" placeholder="例如：https://api.openai.com/v1/chat/completions">
+            
+            <label for="api-key">密钥 (Secret Key):</label>
+            <input type="password" id="api-key" placeholder="请输入您的API Key">
+            
+            <label for="api-model">选择模型:</label>
+            <input type="text" id="api-model" placeholder="例如：gpt-3.5-turbo">
+            
+            <div class="modal-actions">
+                <button id="test-api-button">测试连接</button>
+                <button id="save-api-button">保存设置</button>
+                <button id="close-api-button">关闭</button>
+            </div>
+            <p id="api-status" class="api-status-message"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

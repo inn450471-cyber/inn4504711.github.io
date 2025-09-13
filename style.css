@@ -1,0 +1,312 @@
+/* 根颜色变量定义 */
+:root {
+    --ivory-silk: #E3D4C7;
+    --cold-crimson: #6E2F3E;
+    --bronze-green: #A79582;
+    --text-color: #3a2e2e;
+    --light-shadow: rgba(0, 0, 0, 0.2);
+    --dark-shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* 页面基础设置 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'SimSun', '宋体', serif;
+    background-color: #000;
+    color: var(--text-color);
+    overflow: hidden;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--bronze-green), var(--ivory-silk));
+}
+
+/* 顶部政务栏 */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: linear-gradient(to bottom, rgba(110, 47, 62, 0.9), rgba(110, 47, 62, 0.7));
+    color: var(--ivory-silk);
+    border-bottom: 2px solid var(--cold-crimson);
+    box-shadow: 0 4px 8px var(--dark-shadow);
+    flex-shrink: 0;
+}
+
+.top-bar-item {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* 主体布局表格 */
+.main-layout-table {
+    width: 100%;
+    height: 100%;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+/* 左侧君主面板 */
+.empress-panel-cell {
+    width: 280px;
+    vertical-align: top;
+    padding: 15px;
+    background-color: rgba(227, 212, 199, 0.5);
+}
+
+#empress-panel {
+    background: rgba(227, 212, 199, 0.7);
+    border: 1px solid var(--bronze-green);
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: inset 0 0 10px var(--light-shadow);
+    height: calc(100% - 22px);
+    overflow-y: auto;
+}
+
+.empress-portrait {
+    width: 100%;
+    padding-bottom: 100%; /* 强制1:1比例 */
+    position: relative;
+    border: 3px solid var(--cold-crimson);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.empress-portrait img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保持图片比例，裁剪多余部分 */
+}
+
+.empress-attributes h3, .empress-attributes h4 {
+    text-align: center;
+    color: var(--cold-crimson);
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.empress-attributes p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.empress-attributes hr {
+    border: none;
+    border-top: 1px solid var(--bronze-green);
+    margin: 10px 0;
+}
+
+/* 中央交互区 */
+.main-content-cell {
+    vertical-align: top;
+    padding: 15px;
+}
+
+#main-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px var(--dark-shadow);
+}
+
+.background-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.foreground-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.event-text-box {
+    background-color: rgba(167, 149, 130, 0.85);
+    border-top: 3px solid var(--ivory-silk);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    max-height: 50%;
+    overflow-y: auto;
+}
+
+.choices-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.choice-button {
+    background-color: var(--cold-crimson);
+    color: var(--ivory-silk);
+    border: 2px solid var(--ivory-silk);
+    border-radius: 5px;
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    min-width: 300px;
+    text-align: left;
+}
+
+.choice-button:hover {
+    background-color: var(--ivory-silk);
+    color: var(--cold-crimson);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--ivory-silk);
+}
+
+/* 底部侍君栏 */
+#consort-panel {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+    background: rgba(110, 47, 62, 0.3);
+    border-top: 1px solid var(--bronze-green);
+    min-height: 100px; /* 占位 */
+    flex-shrink: 0;
+}
+
+/* 操作控制栏 */
+#control-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+.control-button {
+    background: var(--bronze-green);
+    color: white;
+    border: 1px solid var(--ivory-silk);
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.control-button:hover {
+    background: var(--cold-crimson);
+}
+
+/* API 设置模态窗口 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--ivory-silk);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px var(--dark-shadow);
+    width: 500px;
+    border: 3px solid var(--cold-crimson);
+    color: var(--text-color);
+}
+
+.modal-content h2 {
+    color: var(--cold-crimson);
+    text-align: center;
+    margin-top: 0;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid var(--bronze-green);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#test-api-button {
+    background-color: var(--bronze-green);
+    color: white;
+}
+#save-api-button {
+    background-color: var(--cold-crimson);
+    color: white;
+}
+#close-api-button {
+    background-color: #ccc;
+    color: #333;
+}
+
+.api-status-message {
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: center;
+    min-height: 20px;
+}
+.api-status-message.success {
+    color: green;
+}
+.api-status-message.error {
+    color: red;
+}
